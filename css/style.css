@@ -1,4 +1,7 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 :root {
   /* Chrome accent (header, logo, intro, game screen) — kept separate from the
      per-element reveal colors in constants.js, which are never touched here. */
