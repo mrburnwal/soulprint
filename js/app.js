@@ -37,6 +37,14 @@ function startGame() {
   renderRound();
 }
 
+function goHome() {
+  choices = []; round = 0;
+  document.getElementById('screen-reveal').classList.remove('reveal-visible');
+  setAtmosphere(true);
+  clearField();
+  showScreen('screen-intro');
+}
+
 function pick(idx) {
   choices.push(idx);
   const nodes = computeNodes(choices);
@@ -74,6 +82,8 @@ function reveal() {
   const nodes = computeNodes(choices);
   animateFieldColor(nodes, el.color, 1400);
 }
+
+document.getElementById('btn-logo-home').addEventListener('click', goHome);
 
 document.getElementById('btn-begin').addEventListener('click', async () => {
   await wordBankReady;
