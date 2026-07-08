@@ -121,13 +121,9 @@ when/if you need it.
 
 ## Before you go live
 
-- Open `js/constants.js`, find `SITE_URL`, and replace `your-site-url-here.com`
-  with your real deployed URL (used in every share caption — see `js/share.js`).
-- Do the same in `index.html`'s `<head>`: three `your-site-url-here.com`
-  placeholders in the Open Graph / Twitter Card meta tags (`og:url`,
-  `og:image`, `twitter:image`). Without this, pasting the link into Discord,
-  X, WhatsApp, iMessage, or Slack won't show a preview card at all — it'll
-  just be a bare link.
+- `SITE_URL` (`js/constants.js`) and the Open Graph / Twitter Card meta tags
+  (`index.html`'s `<head>`) are set to `https://yoursoulprint.onrender.com` —
+  update all four in one pass if the deployed domain ever changes.
 - **Double-clicking `index.html` still works** for a quick look (all `js/*.js`
   files load fine over `file://`), but **test the real thing over `https://`**
   before sharing it — browsers block `fetch()` of local JSON over `file://`, so

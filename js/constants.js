@@ -20,6 +20,6 @@ const NULL_STATS = {
   lean: { mean: 0.2248, std: 0.1805 }
 };
 
-const SITE_URL = 'https://your-site-url-here.com';
+const SITE_URL = 'https://yoursoulprint.onrender.com';
 
 const PROCESSING_PHRASES = ["connecting soul", "reading the thread", "listening to the shape"];

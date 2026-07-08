@@ -31,7 +31,8 @@ const SHARE_TEMPLATES = [
   (name) => `Filed under "things I didn't know about myself": ${name}. Your turn to find out: ${SITE_URL}`,
   (name) => `${name}, apparently, and I can't entirely argue with it. Try the reading yourself: ${SITE_URL}`,
   (name) => `Twelve clicks in the dark, one very specific answer: ${name}. Draw yours: ${SITE_URL}`,
-  (name) => `I asked for nothing and got ${name} anyway. That tracks. Your turn: ${SITE_URL}`
+  (name) => `I asked for nothing and got ${name} anyway. That tracks. Your turn: ${SITE_URL}`,
+  (name) => `I have found my soul spirit — ${name}. Now, find yours: ${SITE_URL}`
 ];
 
 function shareCaption(result) {
