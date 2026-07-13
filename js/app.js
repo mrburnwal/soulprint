@@ -7,20 +7,6 @@ let lastResult = null;
 
 const wordBankReady = loadWordBank().then(bank => { WORD_BANK = bank; });
 
-// The site-wide ad script in index.html's <head> is an "onclick" unit. It's
-// a blocking (non-async) script in <head>, so it runs before <body> exists —
-// which means it can only have attached its click listener to `document`,
-// not `document.body`. A click bubbles target -> ... -> body -> document, so
-// stopping it here (bubble phase, on body) happens *after* it's already
-// fired on whatever button/word the user actually clicked, but *before* it
-// can reach the ad script's listener up at document — confining the ad to
-// only clicks that originate inside an .ad-slot.
-document.body.addEventListener('click', (e) => {
-  if (!e.target.closest('.ad-slot')) {
-    e.stopPropagation();
-  }
-});
-
 function showScreen(id) {
   document.querySelectorAll('.layer').forEach(el => el.classList.add('hidden'));
   document.getElementById(id).classList.remove('hidden');
