@@ -22,4 +22,6 @@ const NULL_STATS = {
 
 const SITE_URL = 'https://yoursoulprint.onrender.com';
 
+// Contents swapped in place (not reassigned) by i18n.js's applyProcessingPhrases()
+// so other files that hold onto this same array reference stay in sync.
 const PROCESSING_PHRASES = ["connecting soul", "reading the thread", "listening to the shape"];

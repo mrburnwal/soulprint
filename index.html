@@ -41,7 +41,7 @@
 
 <!-- Direct-link unit — welcome page top bar -->
 <div id="ad-top-intro" class="ad-slot ad-top">
-  <a class="ad-link" href="https://www.effectivecpmnetwork.com/fnmd1g4yc?key=d963d2fd1d6624bedc3ee402be1a5a5c" target="_blank" rel="noopener noreferrer sponsored">Advertisement</a>
+  <a class="ad-link" href="https://www.effectivecpmnetwork.com/fnmd1g4yc?key=d963d2fd1d6624bedc3ee402be1a5a5c" target="_blank" rel="noopener noreferrer sponsored" data-i18n="adLabel">Advertisement</a>
 </div>
 
 <!-- Native banner unit — reveal page top bar -->
@@ -64,16 +64,16 @@
   <script src="https://www.highperformanceformat.com/825cde881e5bbb7d1139035c6d9dadb6/invoke.js"></script>
 </div>
 
-<div id="ad-right" class="ad-slot ad-side ad-side-right hidden">Advertisement</div>
+<div id="ad-right" class="ad-slot ad-side ad-side-right hidden" data-i18n="adLabel">Advertisement</div>
 
 <div id="stage">
   <canvas id="field"></canvas>
 
   <div id="screen-intro" class="layer">
-    <div class="eyebrow">a solo experiment</div>
+    <div class="eyebrow" data-i18n="introEyebrow">a solo experiment</div>
     <h1 class="title">Soulprint</h1>
-    <p class="sub">Twelve choices. No context for any of them.<br>Something older than your reasoning is doing the choosing — and it's about to be drawn.</p>
-    <button class="cta" id="btn-begin">Begin</button>
+    <p class="sub" data-i18n-html="introSub">Twelve choices. No context for any of them.<br>Something older than your reasoning is doing the choosing — and it's about to be drawn.</p>
+    <button class="cta" id="btn-begin" data-i18n="beginButton">Begin</button>
   </div>
 
   <div id="screen-game" class="layer hidden">
@@ -91,12 +91,12 @@
     <div id="reveal-name"></div>
     <p id="reveal-desc"></p>
     <div class="reveal-actions">
-      <button class="ghost" id="btn-again">Draw again</button>
-      <button class="ghost" id="btn-save">Save image</button>
+      <button class="ghost" id="btn-again" data-i18n="drawAgainButton">Draw again</button>
+      <button class="ghost" id="btn-save" data-i18n="saveImageButton">Save image</button>
       <button class="ghost" id="btn-share">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4.2A8 8 0 1 1 9 19.3L4 20z"/><path d="M8.5 9.7c.2 2.6 3.2 5.6 5.8 5.8" stroke-linecap="round"/></svg>
-        Share
+        <span data-i18n="shareButton">Share</span>
       </button>
     </div>
   </div>
@@ -105,28 +105,35 @@
 <footer id="site-footer">
   <span>Soulprint</span>
   <span class="dot">·</span>
-  <button id="btn-disclaimer">Disclaimer</button>
+  <button id="btn-disclaimer" data-i18n="disclaimerButton">Disclaimer</button>
+  <span class="dot">·</span>
+  <div class="lang-toggle">
+    <button data-lang-btn="en" aria-label="English">EN</button>
+    <button data-lang-btn="es" aria-label="Español">ES</button>
+  </div>
 </footer>
 
 <div id="disclaimer-overlay" class="hidden">
   <div class="modal-card">
-    <div class="eyebrow">before you take this seriously</div>
-    <h2>This is a game</h2>
-    <p>Soulprint is a solo entertainment project, not a psychological, medical, or scientific instrument. The "spirit" you're shown is generated deterministically from the pattern of twelve arbitrary clicks — there's no hidden test and no correct answers.</p>
-    <p>Nothing you do here is collected, stored, or sent anywhere. The whole game runs in your browser; closing the tab erases it completely.</p>
-    <p>Treat your result exactly as seriously as a coin flip dressed up in nice typography — which is to say, not very. That's the point.</p>
-    <button class="ghost" id="btn-disclaimer-close">Close</button>
+    <div class="eyebrow" data-i18n="disclaimerEyebrow">before you take this seriously</div>
+    <h2 data-i18n="disclaimerHeading">This is a game</h2>
+    <p data-i18n="disclaimerP1">Soulprint is a solo entertainment project, not a psychological, medical, or scientific instrument. The "spirit" you're shown is generated deterministically from the pattern of twelve arbitrary clicks — there's no hidden test and no correct answers.</p>
+    <p data-i18n="disclaimerP2">Nothing you do here is collected, stored, or sent anywhere. The whole game runs in your browser; closing the tab erases it completely.</p>
+    <p data-i18n="disclaimerP3">Treat your result exactly as seriously as a coin flip dressed up in nice typography — which is to say, not very. That's the point.</p>
+    <button class="ghost" id="btn-disclaimer-close" data-i18n="closeButton">Close</button>
   </div>
 </div>
 
 <script src="./js/constants.js"></script>
 <script src="./js/random.js"></script>
 <script src="./js/wordbank.js"></script>
+<script src="./js/i18n.js"></script>
 <script src="./js/geometry.js"></script>
 <script src="./js/constellation.js"></script>
 <script src="./js/field.js"></script>
 <script src="./js/classify.js"></script>
 <script src="./js/characters.js"></script>
+<script src="./js/characters.es.js"></script>
 <script src="./js/card.js"></script>
 <script src="./js/share.js"></script>
 <script src="./js/app.js"></script>

@@ -35,9 +35,46 @@ const SHARE_TEMPLATES = [
   (name) => `I have found my soul spirit — ${name}. Now, find yours: ${SITE_URL}`
 ];
 
+// Same voice pool as SHARE_TEMPLATES, translated — picked at random on every
+// share so re-drawing (or re-sharing) doesn't read identically twice.
+const SHARE_TEMPLATES_ES = [
+  (name, label) => `Salió ${name} — ${label}. Doce elecciones, sin contexto, y esto fue lo que apareció. Lee tu espíritu: ${SITE_URL}`,
+  (name, label) => `Resulta que soy ${name}, al parecer. Doce elecciones a ciegas y una forma apareció de la nada. Descubre la tuya: ${SITE_URL}`,
+  (name) => `${name}. Esa es la forma que doce elecciones sin explicación sacaron de mí. Mira cómo es la tuya: ${SITE_URL}`,
+  (name, label) => `Sin contexto, sin explicación — solo doce elecciones. Sacaron ${name} (${label}). Pruébalo tú: ${SITE_URL}`,
+  (name) => `Entré a ciegas, salí como ${name}. El patrón no miente. Encuentra el tuyo: ${SITE_URL}`,
+  (name, label) => `${label}, resultó ser ${name}. No esperaba eso de doce preguntas de dos palabras. Tu turno: ${SITE_URL}`,
+  (name) => `Al parecer soy ${name}. No sé qué dice eso de mí, pero aquí estamos: ${SITE_URL}`,
+  (name) => `${name} — esa es mi lectura. Doce elecciones, cero contexto, curiosamente acertado. Prueba la tuya: ${SITE_URL}`,
+  (name) => `No tengo nada que objetar. Ahora soy ${name}, supongo. Descubre el tuyo: ${SITE_URL}`,
+  (name) => `Doce preguntas de dos palabras después, soy ${name}. Saca tus propias conclusiones: ${SITE_URL}`,
+  (name) => `Dijeron elige una, doce veces, sin explicación. Me tocó ${name}. Mira qué te toca a ti: ${SITE_URL}`,
+  (name) => `${name}. Incómodamente específico para algo sin ningún contexto. Pruébalo: ${SITE_URL}`,
+  (name) => `No pensé que doce clics pudieran decirme algo. Al parecer soy ${name}. Tu turno: ${SITE_URL}`,
+  (name, label) => `Lectura completa: ${name} (${label}). Tómatelo tan en serio como quieras. Descubre la tuya: ${SITE_URL}`,
+  (name) => `Hice doce clics sin pensar y me dieron ${name}. Intenta no pensar tampoco: ${SITE_URL}`,
+  (name) => `${name} — sacado, no elegido. Hay una diferencia y la sentí. Mira la tuya: ${SITE_URL}`,
+  (name) => `Sin preguntas de cuestionario, sin contexto, solo doce elecciones. De alguna forma llegué a ${name}. Tu turno: ${SITE_URL}`,
+  (name) => `Soy, según doce elecciones arbitrarias, ${name}. Curiosamente acertado. Pruébalo: ${SITE_URL}`,
+  (name, label) => `${label}. En concreto, ${name}. Yo no elegí esto — lo hizo el patrón. Descubre la tuya: ${SITE_URL}`,
+  (name) => `En algún punto entre el primer clic y el doceavo, me convertí en ${name}. Descubre en qué te conviertes tú: ${SITE_URL}`,
+  (name) => `Esto es extremadamente acertado o una coincidencia muy convincente: ${name}. Mira la tuya: ${SITE_URL}`,
+  (name) => `${name}, sacado de nada más que doce clics y lo que sea que hay debajo de mi razón. Tu turno: ${SITE_URL}`,
+  (name) => `Doce elecciones, sin explicación, un resultado: ${name}. Inquietantemente específico. Pruébalo tú: ${SITE_URL}`,
+  (name) => `Entré sin ninguna expectativa y salí como ${name}. Diez sobre diez, lo repetiría: ${SITE_URL}`,
+  (name) => `${name} — no lo esperaba, pero es justo lo que dijo el patrón. Descubre tu propia forma: ${SITE_URL}`,
+  (name) => `Cada elección se sintió al azar. El resultado no: ${name}. Mira qué dice el tuyo: ${SITE_URL}`,
+  (name) => `Archivado bajo "cosas que no sabía sobre mí": ${name}. Tu turno de descubrirlo: ${SITE_URL}`,
+  (name) => `${name}, al parecer, y no puedo llevarle del todo la contraria. Prueba tú la lectura: ${SITE_URL}`,
+  (name) => `Doce clics en la oscuridad, una respuesta muy específica: ${name}. Descubre la tuya: ${SITE_URL}`,
+  (name) => `No pedí nada y de todas formas me dieron ${name}. Tiene sentido. Tu turno: ${SITE_URL}`,
+  (name) => `He encontrado mi espíritu — ${name}. Ahora, encuentra el tuyo: ${SITE_URL}`,
+];
+
 function shareCaption(result) {
   const el = ELEMENTS[result.element];
-  const template = SHARE_TEMPLATES[Math.floor(Math.random() * SHARE_TEMPLATES.length)];
+  const pool = currentLang === 'es' ? SHARE_TEMPLATES_ES : SHARE_TEMPLATES;
+  const template = pool[Math.floor(Math.random() * pool.length)];
   return template(result.name, el.label);
 }
 
@@ -76,7 +113,7 @@ function shareCardImage(choices, result, btn) {
         link.click();
         try {
           await navigator.clipboard.writeText(text);
-          btn.textContent = 'Saved — caption copied';
+          btn.textContent = t('savedCaptionCopied');
           setTimeout(() => { btn.innerHTML = originalHTML; }, 1800);
         } catch (e) {}
         resolve();

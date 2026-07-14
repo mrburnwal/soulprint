@@ -121,7 +121,7 @@ const CHARACTERS = {
   ],
 };
 
-function pickCharacter(element) {
-  const pool = CHARACTERS[element];
+function pickCharacter(element, lang) {
+  const pool = (lang === 'es' && typeof CHARACTERS_ES !== 'undefined' ? CHARACTERS_ES : CHARACTERS)[element];
   return pool[Math.floor(Math.random() * pool.length)];
 }

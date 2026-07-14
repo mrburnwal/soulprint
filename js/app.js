@@ -5,7 +5,7 @@ let choices = [];
 let round = 0;
 let lastResult = null;
 
-const wordBankReady = loadWordBank().then(bank => { WORD_BANK = bank; });
+const wordBankReady = loadWordBank(currentLang).then(bank => { WORD_BANK = bank; });
 
 function showScreen(id) {
   document.querySelectorAll('.layer').forEach(el => el.classList.add('hidden'));
@@ -64,7 +64,7 @@ function reveal() {
   setAtmosphere(false);
   showScreen('screen-reveal');
   const element = classify(choices);
-  const character = pickCharacter(element);
+  const character = pickCharacter(element, currentLang);
   const result = { element, name: character.name, desc: character.desc };
   lastResult = result;
   const el = ELEMENTS[result.element];
